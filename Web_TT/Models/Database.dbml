@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Web_TT" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=HUYHOANG\SQLEXPRESS;Initial Catalog=Web_TT;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Web_TTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_SinhVien" Member="tbl_SinhViens">
+    <Type Name="tbl_SinhVien">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MSSV" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastEditBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="LastEditDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Is_Delete" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DeleteBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Extend_Data" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_LopHocPhan" Member="tbl_LopHocPhans">
+    <Type Name="tbl_LopHocPhan">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenLopHP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTinChi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastEditBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="LastEditDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Is_Delete" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DeleteBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Extend_Data" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_SinhVien_LHP" Member="tbl_SinhVien_LHPs">
+    <Type Name="tbl_SinhVien_LHP">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_LHP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_SinhVien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Extend_Data" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_TaiKhoan" Member="tbl_TaiKhoans">
+    <Type Name="tbl_TaiKhoan">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Is_Login" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastEditBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="LastEditDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Is_Delete" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DeleteBy" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MaNhomQuyen" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

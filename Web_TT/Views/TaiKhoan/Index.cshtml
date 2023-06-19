@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    function LoadData() {
+        $.ajax({
+            type: "GET",
+            url: '/TaiKhoan/GetData',
+            success: function (response) {
+                if (response == "-1") {
+                    alert("Bạn cần đăng nhập để sử dụng chức năng");
+                }
+                else {
+                    var rs = JSON.parse(response);
+                    if (rs.ErrCode == 1) {
+                        var tbody = $("#tbl_show_data_tbody");
+
+                        var html_str = "";
+                        for (var i = 0; i < rs.Data.length; i++) {
+                            var data_row = rs.Data[i];
+                            console.log(data_row)
+                            html_str += "<tr><td>" + (i + 1) + "</td><td>" + data_row.ID + "</td><td>" + data_row.TaiKhoan + "</td><td>" + data_row.MatKhau + "</td><td>" + data_row.Is_Login + "</td><td align='center'> <a href='/TaiKhoan/Edit?id=" + data_row.ID + "' class='btn btn-outline-primary'> <i class='fa fa-edit'></i> </a> <button type='button' class='btn btn-outline-secondary ml-1' onclick='btn_XoaClick(\"" + data_row.ID + "\")'> <i class='fa fa-trash'> </i> </button> </td></tr>";
+                        }
+
+                        tbody.html(html_str);
+                    }
+                    else {
+                        alert(rs.ErrDesc);
+                    }
+                }
+            },
+            error: function (rs) {
+                alert("Có lỗi xảy ra trong quá trình lấy dữ liệu tài khoản, vui lòng quay lại sau!");
+            }
+        })
+    }
+    function btn_XoaClick(id) {
+        if (confirm("Bạn có muốn xóa dữ liệu có id: " + id + "này không?") == true) {
+            $.ajax({
+                type: "POST",
+                data: { id: id },
+                url: '/TaiKhoan/Delete',
+                success: function (response) {
+                    if (response == "-1") {
+                        alert("Bạn cần đăng nhập để sử dụng chức năng");
+                    }
+                    else {
+                        var rs = JSON.parse(response);
+                        if (rs.ErrCode == 1) {
+                            alert(rs.ErrDesc);
+                            LoadData();
+                        }
+                        else {
+                            alert(rs.ErrDesc);
+                        }
+                    }
+                },
+                error: function (rs) {
+                    alert("Có lỗi xảy ra trong quá trình xóa tài khoản, vui lòng quay lại sau!");
+                }
+            })
+        }
+    }
+
+    $(document).ready(function () {
+        LoadData();
+
+        $("#btn_search").click(function () {
+            var search_val = $("#txt_search_val").val();
+            if (!search_val) {
+                alert("Vui lòng nhập giá trị tìm kiếm!");
+                $("#txt_search_val").focus();
+                return;
+            }
+            var search_type = $("#slc_search_type").val();
+            if (search_type == -1) {
+                alert("vui lòng chọn tiêu chí tìm kiếm!");
+                $("#slc_search_type").focus();
+                return;
+            }
+            $.ajax({
+                type: "GET",
+                data: { txt_search_val: search_val, slc_search_type: search_type },
+                url: '/TaiKhoan/Search',
+                success: function (response) {
+                    if (response == "-1") {
+                        alert("Bạn cần đăng nhập để sử dụng chức năng");
+                    }
+                    else {
+                        var rs = JSON.parse(response);
+                        var tbody = $("#tbl_show_data_tbody");
+                        tbody.html("");
+
+                        if (rs.ErrCode == 1) {
+                            var html_str = "";
+                            for (var i = 0; i < rs.Data.length; i++) {
+                                var data_row = rs.Data[i];
+                                console.log(data_row)
+                                html_str += "<tr><td>" + (i + 1) + "</td><td>" + data_row.ID + "</td><td>" + data_row.TaiKhoan + "</td><td>" + data_row.MatKhau + "</td><td>" + data_row.Is_Login + "</td><td align='center'> <a href='/TaiKhoan/ChinhSua?id=" + data_row.ID + "' class='btn btn-outline-primary'> <i class='fa fa-edit'></i> </a> <button type='button' class='btn btn-outline-secondary ml-1' onclick='btn_XoaClick(\"" + data_row.ID + "\")'> <i class='fa fa-trash'> </i> </button> </td></tr>";
+                            }
+
+                            tbody.html(html_str);
+                        }
+                        else {
+                            alert(rs.ErrDesc);
+                        }
+                    }
+                },
+                error: function (rs) {
+                    alert("Có lỗi xảy ra trong quá trình lấy dữ liệu tài khoản, vui lòng quay lại sau!");
+                }
+            })
+        })
+    })
+</script>
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Danh sách tài khoản</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Tài khoản</a></li>
+                    <li class="breadcrumb-item active">Danh sách tài khoản</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <span>Tìm kiếm: </span>
+                        <input type="text" id="txt_search_val" name="txt_search_val" placeholder="Nhập giá trị tìm kiếm" />
+                        <select id="slc_search_type">
+                            <option value="-1">Chọn tiêu chí tìm kiếm</option>
+                            <option value="0">Mã tài khoản</option>
+                            <option value="1">Tài khoản</option>                           
+                        </select>
+                        <button class="btn btn-primary mb-2" type="button" id="btn_search" name="btn_search"> Tìm kiếm </button>
+                        <a href="/TaiKhoan/Create" class="btn btn-primary mb-3" style="float:right">Thêm mới</a>
+                        <table id="tbl_show_data" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã Tài Khoản</th>
+                                    <th>Tài Khoản</th>
+                                    <th>Mật khẩu</th>                                   
+                                    <th>Trạng thái đăng nhập</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl_show_data_tbody"></tbody>
+                            <tfoot></tfoot>
+                        </table>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+
+        function LoadData(id) {
+            $.ajax({
+                type: "GET",
+                data: { id: id },
+                url: '/TaiKhoan/GetDataByID',
+
+                success: function (response) {
+                    if (response == "-1") {
+                        alert("Bạn cần đăng nhập để sử dụng chức năng");
+                    }
+                    else {
+                        var rs = JSON.parse(response);
+                        if (rs.ErrCode == 1) {
+                            var obj = rs.Data;
+                            console.log("ChinhSua.cshtml obj: ", obj)
+                            if (obj.ID) {
+                                $("#txt_ID").val(obj.ID);
+                            }                          
+                            if (obj.TaiKhoan) {
+                                $("#txt_TaiKhoan").val(obj.TaiKhoan);
+                            }
+                            if (obj.MatKhau) {
+                                $("#txt_MatKhau").val(obj.MatKhau);
+                            }
+                        }
+                        else {
+                            alert(rs.ErrDesc);
+                        }
+                    }
+                },
+                error: function (rs) {
+                    alert("Có lỗi xảy ra trong quá trình lấy dữ liệu tài khoản, vui lòng quay lại sau!");
+                }
+            })
+
+        }
+
+        var url = new URL(window.location.href);
+        var id_on_url = url.searchParams.get("id");
+        if (id_on_url) {
+            LoadData(id_on_url);
+        }
+        else {
+            alert("Vui lòng truyền vào id của dữ liệu cần chỉnh sửa");
+        }
+        function validateInputText(input_id, obj_name) {
+            var input_val = $("#" + input_id).val();
+            if (!input_val) {
+                alert("Vui lòng điền: " + obj_name);
+                $("#" + input_id).focus();
+                return false;
+            }
+            return true;
+        }
+
+        $("#btn_action").click(function () {            
+            if (!validateInputText("txt_TaiKhoan", "Tài khoản")) { return false; };
+            if (!validateInputText("txt_MatKhau", "Mật khẩu")) { return false; };
+            if (!validateInputText("txt_NhapLaiMatKhau", "Nhập lại Mật khẩu")) { return false; };
+            var mk = $("#txt_MatKhau").val();
+            var re_mk = $("#txt_NhapLaiMatKhau").val();
+
+            if (mk != re_mk) {
+                alert("Mật khẩu nhập lại không giống với Mật khẩu đã nhập");
+                return false;
+            }
+
+            var act_form = $("#action_form")[0];
+            var formData = new FormData(act_form);
+
+            $.ajax({
+                type: "POST",
+                data: formData,
+                url: '/TaiKhoan/Edit_act',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    if (response == "-1") {
+                        alert("Bạn cần đăng nhập để sử dụng chức năng");
+                    }
+                    else {
+                        var rs = JSON.parse(response);
+                        alert(rs.ErrDesc);
+                    }
+                },
+                error: function (rs) {
+                    alert("Có lỗi xảy ra trong quá trình cập nhật tài khoản, vui lòng quay lại sau!");
+                }
+            })
+        })
+    })
+
+</script>
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Cập nhật tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Tài khoản</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <form id="action_form">
+                        <div class="card-body">                          
+                            <div class="form-row">    
+                                <input type="hidden" id="txt_ID" name="txt_ID" />
+                                <div class="form-group  col-sm-12">
+                                    <label for="txt_TaiKhoan">Tài khoản</label>
+                                    <input type="text" class="form-control" id="txt_TaiKhoan" name="txt_TaiKhoan" placeholder="Nhập Tài khoản">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txt_MatKhau">Mật Khẩu</label>
+                                    <input type="text" class="form-control" id="txt_MatKhau" name="txt_MatKhau" placeholder="Nhập Mật khẩu">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="txt_NhapLaiMatKhau">Nhập lại Mật Khẩu</label>
+                                    <input type="text" class="form-control" id="txt_NhapLaiMatKhau" name="txt_NhapLaiMatKhau" placeholder="Nhập lại Mật khẩu">
+                                </div>
+                            </div>
+                        </div>                      
+                        <div class="card-footer">
+                            <button type="button" id="btn_action" class="btn btn-primary right" style="float:right;">Cập nhật</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
