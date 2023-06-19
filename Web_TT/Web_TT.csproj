@@ -126,7 +126,9 @@
     <Compile Include="Common\EnumErrCode.cs" />
     <Compile Include="Common\FunctResult_ett.cs" />
     <Compile Include="Common\ShareFunct.cs" />
+    <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Ctrl\SinhVien_Ctrl.cs" />
     <Compile Include="Ctrl\TaiKhoan_Ctrl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2229,6 +2231,7 @@
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\TaiKhoan\Create.cshtml" />
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
+    <Content Include="Views\SinhVien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
