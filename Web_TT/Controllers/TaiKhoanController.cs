@@ -67,8 +67,7 @@ namespace Web_TT.Controllers
                 Session[Constant.Sesstion_User_Tk_Acc] = tk;               
             }
             return JsonConvert.SerializeObject(rs);
-        }    
-        [HttpGet]
+        }           
         public ActionResult Logout()
         {
             TaiKhoan_Ctrl ctrl = new TaiKhoan_Ctrl();
