@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AdminAuthorize.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Common\EnumErrCode.cs" />
     <Compile Include="Common\FunctResult_ett.cs" />
     <Compile Include="Common\ShareFunct.cs" />
+    <Compile Include="Controllers\LoiPhanQuyenController.cs" />
     <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Ctrl\SinhVien_Ctrl.cs" />
@@ -2232,6 +2234,9 @@
     <Content Include="Views\TaiKhoan\Create.cshtml" />
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
     <Content Include="Views\SinhVien\Index.cshtml" />
+    <Content Include="Views\SinhVien\Create.cshtml" />
+    <Content Include="Views\SinhVien\Edit.cshtml" />
+    <Content Include="Views\LoiPhanQuyen\BaoLoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

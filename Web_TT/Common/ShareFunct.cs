@@ -10,6 +10,7 @@ namespace Web_TT.Common
 {
     public class ShareFunct
     {
+        public static DatabaseDataContext db = new DatabaseDataContext();
         // HashMD5
         public static string CreateMD5(string input)
         {
@@ -39,6 +40,21 @@ namespace Web_TT.Common
                 o.TaiKhoan == adminId && (o.Is_Delete == null || o.Is_Delete == 0));
 
             if (obj != null && obj.Is_Login == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool KiemTraQuyen(string ID)
+        {
+            
+            tbl_TaiKhoan sesstion = (tbl_TaiKhoan)HttpContext.Current.Session["user"];
+            var qr = db.tbl_PhanQuyens.Where(o => o.ID_TaiKhoan == sesstion.ID && (o.ID_ChucNang == ID));
+            if (qr.Any())
             {
                 return true;
             }

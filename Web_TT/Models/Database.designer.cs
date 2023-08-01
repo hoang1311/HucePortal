@@ -30,12 +30,18 @@ namespace Web_TT.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Inserttbl_SinhVien(tbl_SinhVien instance);
-    partial void Updatetbl_SinhVien(tbl_SinhVien instance);
-    partial void Deletetbl_SinhVien(tbl_SinhVien instance);
     partial void Inserttbl_LopHocPhan(tbl_LopHocPhan instance);
     partial void Updatetbl_LopHocPhan(tbl_LopHocPhan instance);
     partial void Deletetbl_LopHocPhan(tbl_LopHocPhan instance);
+    partial void Inserttbl_ChucNang(tbl_ChucNang instance);
+    partial void Updatetbl_ChucNang(tbl_ChucNang instance);
+    partial void Deletetbl_ChucNang(tbl_ChucNang instance);
+    partial void Inserttbl_PhanQuyen(tbl_PhanQuyen instance);
+    partial void Updatetbl_PhanQuyen(tbl_PhanQuyen instance);
+    partial void Deletetbl_PhanQuyen(tbl_PhanQuyen instance);
+    partial void Inserttbl_SinhVien(tbl_SinhVien instance);
+    partial void Updatetbl_SinhVien(tbl_SinhVien instance);
+    partial void Deletetbl_SinhVien(tbl_SinhVien instance);
     partial void Inserttbl_SinhVien_LHP(tbl_SinhVien_LHP instance);
     partial void Updatetbl_SinhVien_LHP(tbl_SinhVien_LHP instance);
     partial void Deletetbl_SinhVien_LHP(tbl_SinhVien_LHP instance);
@@ -74,19 +80,35 @@ namespace Web_TT.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tbl_SinhVien> tbl_SinhViens
-		{
-			get
-			{
-				return this.GetTable<tbl_SinhVien>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_LopHocPhan> tbl_LopHocPhans
 		{
 			get
 			{
 				return this.GetTable<tbl_LopHocPhan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_ChucNang> tbl_ChucNangs
+		{
+			get
+			{
+				return this.GetTable<tbl_ChucNang>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_PhanQuyen> tbl_PhanQuyens
+		{
+			get
+			{
+				return this.GetTable<tbl_PhanQuyen>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_SinhVien> tbl_SinhViens
+		{
+			get
+			{
+				return this.GetTable<tbl_SinhVien>();
 			}
 		}
 		
@@ -103,6 +125,528 @@ namespace Web_TT.Models
 			get
 			{
 				return this.GetTable<tbl_TaiKhoan>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_LopHocPhan")]
+	public partial class tbl_LopHocPhan : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID;
+		
+		private string _TenLopHP;
+		
+		private System.Nullable<int> _SoTinChi;
+		
+		private string _CreateBy;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _LastEditBy;
+		
+		private System.Nullable<System.DateTime> _LastEditDate;
+		
+		private System.Nullable<byte> _Is_Delete;
+		
+		private string _DeleteBy;
+		
+		private System.Nullable<System.DateTime> _DeleteDate;
+		
+		private string _Extend_Data;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(string value);
+    partial void OnIDChanged();
+    partial void OnTenLopHPChanging(string value);
+    partial void OnTenLopHPChanged();
+    partial void OnSoTinChiChanging(System.Nullable<int> value);
+    partial void OnSoTinChiChanged();
+    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnLastEditByChanging(string value);
+    partial void OnLastEditByChanged();
+    partial void OnLastEditDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastEditDateChanged();
+    partial void OnIs_DeleteChanging(System.Nullable<byte> value);
+    partial void OnIs_DeleteChanged();
+    partial void OnDeleteByChanging(string value);
+    partial void OnDeleteByChanged();
+    partial void OnDeleteDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDeleteDateChanged();
+    partial void OnExtend_DataChanging(string value);
+    partial void OnExtend_DataChanged();
+    #endregion
+		
+		public tbl_LopHocPhan()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLopHP", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string TenLopHP
+		{
+			get
+			{
+				return this._TenLopHP;
+			}
+			set
+			{
+				if ((this._TenLopHP != value))
+				{
+					this.OnTenLopHPChanging(value);
+					this.SendPropertyChanging();
+					this._TenLopHP = value;
+					this.SendPropertyChanged("TenLopHP");
+					this.OnTenLopHPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTinChi", DbType="Int")]
+		public System.Nullable<int> SoTinChi
+		{
+			get
+			{
+				return this._SoTinChi;
+			}
+			set
+			{
+				if ((this._SoTinChi != value))
+				{
+					this.OnSoTinChiChanging(value);
+					this.SendPropertyChanging();
+					this._SoTinChi = value;
+					this.SendPropertyChanged("SoTinChi");
+					this.OnSoTinChiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(10)")]
+		public string CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastEditBy", DbType="NVarChar(10)")]
+		public string LastEditBy
+		{
+			get
+			{
+				return this._LastEditBy;
+			}
+			set
+			{
+				if ((this._LastEditBy != value))
+				{
+					this.OnLastEditByChanging(value);
+					this.SendPropertyChanging();
+					this._LastEditBy = value;
+					this.SendPropertyChanged("LastEditBy");
+					this.OnLastEditByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastEditDate", DbType="Date")]
+		public System.Nullable<System.DateTime> LastEditDate
+		{
+			get
+			{
+				return this._LastEditDate;
+			}
+			set
+			{
+				if ((this._LastEditDate != value))
+				{
+					this.OnLastEditDateChanging(value);
+					this.SendPropertyChanging();
+					this._LastEditDate = value;
+					this.SendPropertyChanged("LastEditDate");
+					this.OnLastEditDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Is_Delete", DbType="TinyInt")]
+		public System.Nullable<byte> Is_Delete
+		{
+			get
+			{
+				return this._Is_Delete;
+			}
+			set
+			{
+				if ((this._Is_Delete != value))
+				{
+					this.OnIs_DeleteChanging(value);
+					this.SendPropertyChanging();
+					this._Is_Delete = value;
+					this.SendPropertyChanged("Is_Delete");
+					this.OnIs_DeleteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteBy", DbType="NVarChar(10)")]
+		public string DeleteBy
+		{
+			get
+			{
+				return this._DeleteBy;
+			}
+			set
+			{
+				if ((this._DeleteBy != value))
+				{
+					this.OnDeleteByChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteBy = value;
+					this.SendPropertyChanged("DeleteBy");
+					this.OnDeleteByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteDate", DbType="Date")]
+		public System.Nullable<System.DateTime> DeleteDate
+		{
+			get
+			{
+				return this._DeleteDate;
+			}
+			set
+			{
+				if ((this._DeleteDate != value))
+				{
+					this.OnDeleteDateChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteDate = value;
+					this.SendPropertyChanged("DeleteDate");
+					this.OnDeleteDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Extend_Data", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Extend_Data
+		{
+			get
+			{
+				return this._Extend_Data;
+			}
+			set
+			{
+				if ((this._Extend_Data != value))
+				{
+					this.OnExtend_DataChanging(value);
+					this.SendPropertyChanging();
+					this._Extend_Data = value;
+					this.SendPropertyChanged("Extend_Data");
+					this.OnExtend_DataChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_ChucNang")]
+	public partial class tbl_ChucNang : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID;
+		
+		private string _TenChucNang;
+		
+		private string _MaChucNang;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(string value);
+    partial void OnIDChanged();
+    partial void OnTenChucNangChanging(string value);
+    partial void OnTenChucNangChanged();
+    partial void OnMaChucNangChanging(string value);
+    partial void OnMaChucNangChanged();
+    #endregion
+		
+		public tbl_ChucNang()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenChucNang", DbType="NVarChar(50)")]
+		public string TenChucNang
+		{
+			get
+			{
+				return this._TenChucNang;
+			}
+			set
+			{
+				if ((this._TenChucNang != value))
+				{
+					this.OnTenChucNangChanging(value);
+					this.SendPropertyChanging();
+					this._TenChucNang = value;
+					this.SendPropertyChanged("TenChucNang");
+					this.OnTenChucNangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChucNang", DbType="NVarChar(100)")]
+		public string MaChucNang
+		{
+			get
+			{
+				return this._MaChucNang;
+			}
+			set
+			{
+				if ((this._MaChucNang != value))
+				{
+					this.OnMaChucNangChanging(value);
+					this.SendPropertyChanging();
+					this._MaChucNang = value;
+					this.SendPropertyChanged("MaChucNang");
+					this.OnMaChucNangChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_PhanQuyen")]
+	public partial class tbl_PhanQuyen : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_TaiKhoan;
+		
+		private string _ID_ChucNang;
+		
+		private string _Mota;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_TaiKhoanChanging(string value);
+    partial void OnID_TaiKhoanChanged();
+    partial void OnID_ChucNangChanging(string value);
+    partial void OnID_ChucNangChanged();
+    partial void OnMotaChanging(string value);
+    partial void OnMotaChanged();
+    #endregion
+		
+		public tbl_PhanQuyen()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TaiKhoan", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_TaiKhoan
+		{
+			get
+			{
+				return this._ID_TaiKhoan;
+			}
+			set
+			{
+				if ((this._ID_TaiKhoan != value))
+				{
+					this.OnID_TaiKhoanChanging(value);
+					this.SendPropertyChanging();
+					this._ID_TaiKhoan = value;
+					this.SendPropertyChanged("ID_TaiKhoan");
+					this.OnID_TaiKhoanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ChucNang", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_ChucNang
+		{
+			get
+			{
+				return this._ID_ChucNang;
+			}
+			set
+			{
+				if ((this._ID_ChucNang != value))
+				{
+					this.OnID_ChucNangChanging(value);
+					this.SendPropertyChanging();
+					this._ID_ChucNang = value;
+					this.SendPropertyChanged("ID_ChucNang");
+					this.OnID_ChucNangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NChar(10)")]
+		public string Mota
+		{
+			get
+			{
+				return this._Mota;
+			}
+			set
+			{
+				if ((this._Mota != value))
+				{
+					this.OnMotaChanging(value);
+					this.SendPropertyChanging();
+					this._Mota = value;
+					this.SendPropertyChanged("Mota");
+					this.OnMotaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -505,308 +1049,6 @@ namespace Web_TT.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_LopHocPhan")]
-	public partial class tbl_LopHocPhan : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID;
-		
-		private string _TenLopHP;
-		
-		private System.Nullable<int> _SoTinChi;
-		
-		private string _CreateBy;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private string _LastEditBy;
-		
-		private System.Nullable<System.DateTime> _LastEditDate;
-		
-		private System.Nullable<byte> _Is_Delete;
-		
-		private string _DeleteBy;
-		
-		private System.Nullable<System.DateTime> _DeleteDate;
-		
-		private string _Extend_Data;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(string value);
-    partial void OnIDChanged();
-    partial void OnTenLopHPChanging(string value);
-    partial void OnTenLopHPChanged();
-    partial void OnSoTinChiChanging(System.Nullable<int> value);
-    partial void OnSoTinChiChanged();
-    partial void OnCreateByChanging(string value);
-    partial void OnCreateByChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnLastEditByChanging(string value);
-    partial void OnLastEditByChanged();
-    partial void OnLastEditDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnLastEditDateChanged();
-    partial void OnIs_DeleteChanging(System.Nullable<byte> value);
-    partial void OnIs_DeleteChanged();
-    partial void OnDeleteByChanging(string value);
-    partial void OnDeleteByChanged();
-    partial void OnDeleteDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDeleteDateChanged();
-    partial void OnExtend_DataChanging(string value);
-    partial void OnExtend_DataChanged();
-    #endregion
-		
-		public tbl_LopHocPhan()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLopHP", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string TenLopHP
-		{
-			get
-			{
-				return this._TenLopHP;
-			}
-			set
-			{
-				if ((this._TenLopHP != value))
-				{
-					this.OnTenLopHPChanging(value);
-					this.SendPropertyChanging();
-					this._TenLopHP = value;
-					this.SendPropertyChanged("TenLopHP");
-					this.OnTenLopHPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTinChi", DbType="Int")]
-		public System.Nullable<int> SoTinChi
-		{
-			get
-			{
-				return this._SoTinChi;
-			}
-			set
-			{
-				if ((this._SoTinChi != value))
-				{
-					this.OnSoTinChiChanging(value);
-					this.SendPropertyChanging();
-					this._SoTinChi = value;
-					this.SendPropertyChanged("SoTinChi");
-					this.OnSoTinChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(10)")]
-		public string CreateBy
-		{
-			get
-			{
-				return this._CreateBy;
-			}
-			set
-			{
-				if ((this._CreateBy != value))
-				{
-					this.OnCreateByChanging(value);
-					this.SendPropertyChanging();
-					this._CreateBy = value;
-					this.SendPropertyChanged("CreateBy");
-					this.OnCreateByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastEditBy", DbType="NVarChar(10)")]
-		public string LastEditBy
-		{
-			get
-			{
-				return this._LastEditBy;
-			}
-			set
-			{
-				if ((this._LastEditBy != value))
-				{
-					this.OnLastEditByChanging(value);
-					this.SendPropertyChanging();
-					this._LastEditBy = value;
-					this.SendPropertyChanged("LastEditBy");
-					this.OnLastEditByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastEditDate", DbType="Date")]
-		public System.Nullable<System.DateTime> LastEditDate
-		{
-			get
-			{
-				return this._LastEditDate;
-			}
-			set
-			{
-				if ((this._LastEditDate != value))
-				{
-					this.OnLastEditDateChanging(value);
-					this.SendPropertyChanging();
-					this._LastEditDate = value;
-					this.SendPropertyChanged("LastEditDate");
-					this.OnLastEditDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Is_Delete", DbType="TinyInt")]
-		public System.Nullable<byte> Is_Delete
-		{
-			get
-			{
-				return this._Is_Delete;
-			}
-			set
-			{
-				if ((this._Is_Delete != value))
-				{
-					this.OnIs_DeleteChanging(value);
-					this.SendPropertyChanging();
-					this._Is_Delete = value;
-					this.SendPropertyChanged("Is_Delete");
-					this.OnIs_DeleteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteBy", DbType="NVarChar(10)")]
-		public string DeleteBy
-		{
-			get
-			{
-				return this._DeleteBy;
-			}
-			set
-			{
-				if ((this._DeleteBy != value))
-				{
-					this.OnDeleteByChanging(value);
-					this.SendPropertyChanging();
-					this._DeleteBy = value;
-					this.SendPropertyChanged("DeleteBy");
-					this.OnDeleteByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteDate", DbType="Date")]
-		public System.Nullable<System.DateTime> DeleteDate
-		{
-			get
-			{
-				return this._DeleteDate;
-			}
-			set
-			{
-				if ((this._DeleteDate != value))
-				{
-					this.OnDeleteDateChanging(value);
-					this.SendPropertyChanging();
-					this._DeleteDate = value;
-					this.SendPropertyChanged("DeleteDate");
-					this.OnDeleteDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Extend_Data", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Extend_Data
-		{
-			get
-			{
-				return this._Extend_Data;
-			}
-			set
-			{
-				if ((this._Extend_Data != value))
-				{
-					this.OnExtend_DataChanging(value);
-					this.SendPropertyChanging();
-					this._Extend_Data = value;
-					this.SendPropertyChanged("Extend_Data");
-					this.OnExtend_DataChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_SinhVien_LHP")]
 	public partial class tbl_SinhVien_LHP : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -969,8 +1211,6 @@ namespace Web_TT.Models
 		
 		private System.Nullable<System.DateTime> _DeleteDate;
 		
-		private string _MaNhomQuyen;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -997,8 +1237,6 @@ namespace Web_TT.Models
     partial void OnDeleteByChanged();
     partial void OnDeleteDateChanging(System.Nullable<System.DateTime> value);
     partial void OnDeleteDateChanged();
-    partial void OnMaNhomQuyenChanging(string value);
-    partial void OnMaNhomQuyenChanged();
     #endregion
 		
 		public tbl_TaiKhoan()
@@ -1222,26 +1460,6 @@ namespace Web_TT.Models
 					this._DeleteDate = value;
 					this.SendPropertyChanged("DeleteDate");
 					this.OnDeleteDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhomQuyen", DbType="NVarChar(10)")]
-		public string MaNhomQuyen
-		{
-			get
-			{
-				return this._MaNhomQuyen;
-			}
-			set
-			{
-				if ((this._MaNhomQuyen != value))
-				{
-					this.OnMaNhomQuyenChanging(value);
-					this.SendPropertyChanging();
-					this._MaNhomQuyen = value;
-					this.SendPropertyChanged("MaNhomQuyen");
-					this.OnMaNhomQuyenChanged();
 				}
 			}
 		}

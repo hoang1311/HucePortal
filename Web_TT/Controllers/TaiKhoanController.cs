@@ -64,7 +64,9 @@ namespace Web_TT.Controllers
             //tạo sesstion
             if (rs.ErrCode == EnumErrCode.Success)
             {
-                Session[Constant.Sesstion_User_Tk_Acc] = tk;               
+                Session[Constant.Sesstion_User_Tk_Acc] = tk;
+               // Session["user"] = tk;
+                Session["user"] = rs.Data;
             }
             return JsonConvert.SerializeObject(rs);
         }    

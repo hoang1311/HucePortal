@@ -28,12 +28,11 @@ namespace Web_TT.Ctrl
                     //đăng nhập thành công
                     rs.ErrCode = EnumErrCode.Success;
                     rs.ErrDesc = Constant.MSG_Login_Success;
-                    var tk_obj = qr.SingleOrDefault();
-
-                    tk_obj.Is_Login = true;
+                    var obj = qr.SingleOrDefault();
+                    obj.Is_Login = true;
                     db.SubmitChanges();
-
-                    rs.Data = tk_obj;
+                    rs.Data = obj;
+                    
                 }
                 else
                 {
