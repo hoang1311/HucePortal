@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Web_TT.App_Start;
 using Web_TT.Common;
 using Web_TT.Ctrl;
 using Web_TT.Models;
@@ -12,6 +13,7 @@ namespace Web_TT.Controllers
 {
     public class TaiKhoanController : Controller
     {
+        [AdminAuthorize(ID = "4")]
         public ActionResult Index()
         {
             if (Session[Constant.Sesstion_User_Tk_Acc] == null)
@@ -21,6 +23,7 @@ namespace Web_TT.Controllers
             }
             return View();
         }
+        [AdminAuthorize(ID = "1")]
         public ActionResult Create()
         {
             if (Session[Constant.Sesstion_User_Tk_Acc] == null)
@@ -30,6 +33,7 @@ namespace Web_TT.Controllers
             }
             return View();
         }
+        [AdminAuthorize(ID = "2")]
         public ActionResult Edit()
         {
             if (Session[Constant.Sesstion_User_Tk_Acc] == null)
@@ -65,7 +69,6 @@ namespace Web_TT.Controllers
             if (rs.ErrCode == EnumErrCode.Success)
             {
                 Session[Constant.Sesstion_User_Tk_Acc] = tk;
-               // Session["user"] = tk;
                 Session["user"] = rs.Data;
             }
             return JsonConvert.SerializeObject(rs);
@@ -84,7 +87,7 @@ namespace Web_TT.Controllers
         [HttpPost]
         public string Get_Info_TaiKhoan()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return null;
             }
@@ -93,7 +96,7 @@ namespace Web_TT.Controllers
         [HttpGet]
         public string GetData()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return "-1";               
             }
@@ -107,7 +110,7 @@ namespace Web_TT.Controllers
         [HttpGet]
         public string GetDataByID()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return "-1";
             }
@@ -119,7 +122,7 @@ namespace Web_TT.Controllers
         [HttpPost]
         public string Create_act()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return "-1";
             }
@@ -135,7 +138,8 @@ namespace Web_TT.Controllers
         [HttpPost]
         public string Edit_act()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
+
             {
                 return "-1";
             }
@@ -151,7 +155,7 @@ namespace Web_TT.Controllers
         [HttpPost]
         public string Delete()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return "-1";
             }
@@ -163,7 +167,7 @@ namespace Web_TT.Controllers
         [HttpGet]
         public string Search()
         {
-            if (Session[Constant.Sesstion_User_Tk_Acc] == null)
+            if (Session["user"] == null)
             {
                 return "-1";
             }

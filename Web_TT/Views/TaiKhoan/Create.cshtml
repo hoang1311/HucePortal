@@ -45,6 +45,7 @@
                     else {
                         var rs = JSON.parse(response);
                         alert(rs.ErrDesc);
+                        window.location.href = window.location.origin + "/TaiKhoan/Index";
                     }
                 },
                 error: function (rs) {
